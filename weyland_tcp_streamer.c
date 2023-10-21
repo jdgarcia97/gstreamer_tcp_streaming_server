@@ -1,3 +1,8 @@
+/***********************************************************************
+ * Simple GStreamer program that will create a pipeline that will stream
+ * A Transport Stream through a port via TCP.  Why TCP....more reliable.
+ * ./weyland_tcp_streamer <transport_stream> <port>
+ * ********************************************************************/
 #include <gst/gst.h>
 #include <stdlib.h>
 #include <stdio.h>
