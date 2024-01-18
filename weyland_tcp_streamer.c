@@ -156,6 +156,11 @@ int main(int argc, char **argv) {
     gboolean terminate = FALSE;
     GstStateChangeReturn ret;
 
+    if(argc != 3){
+	g_error("usage is: ./weyland_tcp_streamer <file_name> <port_to_stream_on>");
+	exit(-1);
+
+    }
     local_pipeline = create_pipeline(argv[1], atoi(argv[2]));
 
     ret = gst_element_set_state( local_pipeline, GST_STATE_PLAYING);
