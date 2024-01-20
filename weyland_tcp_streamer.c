@@ -1,8 +1,9 @@
 #include <gst/gst.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 
-/* UDP src Streaming elements. */ 
+/* SRC Streaming elements. */ 
 static GstElement *pipeline;
 static GstElement *filesrc;
 static GstElement *tsdemux;
@@ -13,6 +14,7 @@ static GstElement *videoconvert;
 static GstElement *x264enc;
 static GstElement *mpegtsmux;
 static GstElement *tcpserversink;
+
 
 /* This function will be called by the pad-added signal */
 static void tsdemux_pad_added_handler (GstElement *src, GstPad *new_pad, GstElement *data) {
