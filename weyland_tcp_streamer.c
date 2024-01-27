@@ -174,8 +174,6 @@ int main(int argc, char **argv) {
     } else {
 
     g_print("[*] Set state to playing...\n");
-    //loop = g_main_loop_new( NULL, FALSE);
-    //g_main_loop_run(loop);
      
     bus = gst_element_get_bus( local_pipeline ); 
 
