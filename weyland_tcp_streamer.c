@@ -119,7 +119,7 @@ static void handle_message (CustomData *data, GstMessage *msg) {
 }
 */
 
-static GstElement *create_pipeline(char *file_name, int port){
+static GstElement *create_pipeline(char *file_name, int port, char *host_name){
 
     pipeline             = gst_pipeline_new("pipeline");
     filesrc              = gst_element_factory_make("filesrc", "filesrc");
@@ -133,7 +133,7 @@ static GstElement *create_pipeline(char *file_name, int port){
     tcpserversink        = gst_element_factory_make("tcpserversink", "tcpserversink");
 
     g_object_set( G_OBJECT(filesrc), "location", file_name, NULL);
-    g_object_set( G_OBJECT(tcpserversink), "host", "192.168.86.23", "port", port, NULL);
+    g_object_set( G_OBJECT(tcpserversink), "host", host_name, "port", port, NULL);
 
                   gst_bin_add_many( GST_BIN(pipeline), filesrc,tsdemux,queue,mpeg2dec,x264enc,mpegtsmux,tcpserversink, NULL);
 		  gst_element_link(filesrc, tsdemux); 
@@ -158,12 +158,12 @@ int main(int argc, char **argv) {
     gboolean terminate = FALSE;
     GstStateChangeReturn ret;
 
-    if(argc != 3){
-	g_error("usage is: ./weyland_tcp_streamer <file_name> <port_to_stream_on>");
+    if(argc != 4){
+	g_error("usage is: ./weyland_tcp_streamer <file_name> <port_to_stream_on> <ip address>");
 	exit(-1);
 
     }
-    local_pipeline = create_pipeline(argv[1], atoi(argv[2]));
+    local_pipeline = create_pipeline(argv[1], atoi(argv[2]), argv[3]);
 
     ret = gst_element_set_state( local_pipeline, GST_STATE_PLAYING);
     if( ret == GST_STATE_CHANGE_FAILURE) {
