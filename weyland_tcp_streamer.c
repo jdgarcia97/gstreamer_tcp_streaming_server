@@ -5,7 +5,6 @@
  * ********************************************************************/
 #include <gst/gst.h>
 #include <stdlib.h>
-#include <stdio.h>
 
 /* SRC Streaming elements. */ 
 static GstElement *pipeline;
