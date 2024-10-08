@@ -8,7 +8,6 @@
 #include <iostream>
 #include <stdio.h>
 #include <unistd.h>
-#include <iostream>
 
 /* SRC Streaming elements. */ 
 static GstElement *pipeline;
