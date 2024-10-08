@@ -7,6 +7,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <syslog.h>
+#include <utime.h>
 
 /* SRC Streaming elements. */ 
 static GstElement *pipeline;
