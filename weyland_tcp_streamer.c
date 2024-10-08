@@ -7,7 +7,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
 /* SRC Streaming elements. */ 
 static GstElement *pipeline;
 static GstElement *filesrc;
